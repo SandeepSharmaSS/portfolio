@@ -1,6 +1,19 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
-  allowedDevOrigins: ['172.20.10.2'],
+  reactStrictMode: true,
+  compress: true,
+  poweredByHeader: false,
+  productionBrowserSourceMaps: false,
+  images: {formats: ["image/avif", "image/webp",],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname:
+          "res.cloudinary.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

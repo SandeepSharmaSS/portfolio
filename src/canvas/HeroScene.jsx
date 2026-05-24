@@ -1,153 +1,284 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 
 import {
   Float,
-  Points,
-  PointMaterial,
-  Line,
+  Sparkles,
+  MeshDistortMaterial,
+  GradientTexture,
 } from "@react-three/drei";
 
-const particlePositions =
-  new Float32Array([
-    -4, 2, 0,
-    -3, 1, 0,
-    -2, -1, 0,
-    1, 2, 0,
-    2, -2, 0,
-    4, 1, 0,
-    3, -1, 0,
-    0, 0, 0,
-  ]);
+import { useRef } from "react";
+
+/* =========================
+   FLOATING WAVE SPHERE
+========================= */
+
+function EnergySphere() {
+  const sphereRef = useRef();
+
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+
+    if (sphereRef.current) {
+      sphereRef.current.rotation.y =
+        t * 0.25;
+
+      sphereRef.current.rotation.x =
+        Math.sin(t * 0.4) * 0.2;
+
+      sphereRef.current.position.y =
+        Math.sin(t * 1.2) * 0.25;
+    }
+  });
+
+  return (
+    <Float
+      speed={2}
+      rotationIntensity={1}
+      floatIntensity={2}
+    >
+      <mesh
+        ref={sphereRef}
+        position={[3, 0, -2]}
+      >
+        <sphereGeometry
+          args={[1.4, 64, 64]}
+        />
+
+        <MeshDistortMaterial
+          speed={2}
+          distort={0.35}
+          radius={1}
+          roughness={0}
+          metalness={0.2}
+        >
+          <GradientTexture
+            stops={[0, 0.5, 1]}
+            colors={[
+              "#06b6d4",
+              "#3b82f6",
+              "#8b5cf6",
+            ]}
+          />
+        </MeshDistortMaterial>
+      </mesh>
+    </Float>
+  );
+}
+
+/* =========================
+   DIGITAL WAVES
+========================= */
+
+function DigitalWaves() {
+  const wave1 = useRef();
+  const wave2 = useRef();
+  const wave3 = useRef();
+
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+
+    if (wave1.current) {
+      wave1.current.rotation.z =
+        t * 0.08;
+    }
+
+    if (wave2.current) {
+      wave2.current.rotation.z =
+        -t * 0.06;
+    }
+
+    if (wave3.current) {
+      wave3.current.rotation.z =
+        t * 0.04;
+    }
+  });
+
+  return (
+    <>
+      {/* WAVE 1 */}
+      <mesh
+        ref={wave1}
+        position={[3, 0, -2]}
+        rotation={[Math.PI / 2, 0, 0]}
+      >
+        <torusGeometry
+          args={[2.3, 0.015, 16, 300]}
+        />
+
+        <meshBasicMaterial
+          color="#06b6d4"
+          transparent
+          opacity={0.7}
+        />
+      </mesh>
+
+      {/* WAVE 2 */}
+      <mesh
+        ref={wave2}
+        position={[3, 0, -2]}
+        rotation={[
+          Math.PI / 2,
+          0.8,
+          0,
+        ]}
+      >
+        <torusGeometry
+          args={[3, 0.015, 16, 300]}
+        />
+
+        <meshBasicMaterial
+          color="#3b82f6"
+          transparent
+          opacity={0.5}
+        />
+      </mesh>
+
+      {/* WAVE 3 */}
+      <mesh
+        ref={wave3}
+        position={[3, 0, -2]}
+        rotation={[
+          Math.PI / 2,
+          -0.6,
+          0,
+        ]}
+      >
+        <torusGeometry
+          args={[3.7, 0.01, 16, 300]}
+        />
+
+        <meshBasicMaterial
+          color="#8b5cf6"
+          transparent
+          opacity={0.35}
+        />
+      </mesh>
+    </>
+  );
+}
+
+/* =========================
+   FLOATING LIGHTS
+========================= */
+
+function FloatingLights() {
+  const light1 = useRef();
+  const light2 = useRef();
+
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+
+    if (light1.current) {
+      light1.current.position.y =
+        Math.sin(t) * 0.5;
+    }
+
+    if (light2.current) {
+      light2.current.position.y =
+        Math.cos(t) * 0.5;
+    }
+  });
+
+  return (
+    <>
+      <mesh
+        ref={light1}
+        position={[-4, 2, -2]}
+      >
+        <sphereGeometry
+          args={[0.08, 32, 32]}
+        />
+
+        <meshBasicMaterial
+          color="#38bdf8"
+        />
+      </mesh>
+
+      <mesh
+        ref={light2}
+        position={[5, -2, -3]}
+      >
+        <sphereGeometry
+          args={[0.1, 32, 32]}
+        />
+
+        <meshBasicMaterial
+          color="#8b5cf6"
+        />
+      </mesh>
+    </>
+  );
+}
+
+/* =========================
+   HERO SCENE
+========================= */
 
 const HeroScene = () => {
   return (
-    <Canvas
-      dpr={[1, 1.5]}
-      gl={{
-        antialias: false,
-        powerPreference:
-          "high-performance",
-        alpha: true,
-      }}
-      camera={{
-        position: [0, 0, 8],
-        fov: 45,
-      }}
-    >
+    <div className="absolute inset-0 -z-10">
 
-      {/* LIGHTS */}
-      <ambientLight intensity={0.6} />
-
-      <pointLight
-        position={[2, 3, 4]}
-        intensity={2}
-        color="#38BDF8"
-      />
-
-      {/* FLOATING TECH OBJECT */}
-      <Float
-        speed={1.5}
-        rotationIntensity={0.7}
-        floatIntensity={1}
+      <Canvas
+        dpr={[1, 1.5]}
+        camera={{
+          position: [0, 0, 8],
+          fov: 45,
+        }}
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference:
+            "high-performance",
+        }}
       >
+        {/* LIGHTS */}
+        <ambientLight intensity={1.2} />
 
-        <mesh position={[2.6, 0.4, 0]}>
-
-          <icosahedronGeometry
-            args={[1, 1]}
-          />
-
-          <meshStandardMaterial
-            color="#38BDF8"
-            wireframe
-            emissive="#38BDF8"
-            emissiveIntensity={1.5}
-          />
-
-        </mesh>
-
-      </Float>
-
-      {/* GLOW SPHERE */}
-      <mesh position={[-2.2, -1.3, -1]}>
-
-        <sphereGeometry
-          args={[0.22, 16, 16]}
+        <pointLight
+          position={[5, 5, 5]}
+          intensity={2}
+          color="#3b82f6"
         />
 
-        <meshStandardMaterial
-          color="#7DD3FC"
-          emissive="#38BDF8"
-          emissiveIntensity={3}
+        <pointLight
+          position={[-5, -3, 2]}
+          intensity={2}
+          color="#8b5cf6"
         />
 
-      </mesh>
+        {/* MAIN OBJECT */}
+        <EnergySphere />
 
-      {/* TECH LINES */}
-      <Line
-        points={[
-          [-4, 2, 0],
-          [-2, 1, 0],
-          [0, 2, 0],
-          [2, 1, 0],
-          [4, 2, 0],
-        ]}
-        color="#38BDF8"
-        lineWidth={1}
-      />
+        {/* DIGITAL WAVES */}
+        <DigitalWaves />
 
-      <Line
-        points={[
-          [-4, -2, 0],
-          [-2, -1, 0],
-          [0, -2, 0],
-          [2, -1, 0],
-          [4, -2, 0],
-        ]}
-        color="#0EA5E9"
-        lineWidth={1}
-      />
+        {/* FLOATING LIGHTS */}
+        <FloatingLights />
 
-      {/* LIGHT RING */}
-      <mesh
-        rotation={[
-          Math.PI / 2,
-          0,
-          0,
-        ]}
-      >
-
-        <torusGeometry
-          args={[2.5, 0.015, 12, 60]}
+        {/* PARTICLES */}
+        <Sparkles
+          count={180}
+          scale={[15, 10, 15]}
+          size={2}
+          speed={0.25}
+          opacity={0.7}
+          color="#ffffff"
         />
 
-        <meshStandardMaterial
-          color="#38BDF8"
-          emissive="#38BDF8"
-          emissiveIntensity={1}
+        {/* FOG */}
+        <fog
+          attach="fog"
+          args={[
+            "#020617",
+            8,
+            20,
+          ]}
         />
-
-      </mesh>
-
-      {/* PARTICLES */}
-      <Points
-        positions={particlePositions}
-        stride={3}
-      >
-
-        <PointMaterial
-          transparent
-          color="#E0F2FE"
-          size={0.06}
-          sizeAttenuation
-          depthWrite={false}
-        />
-
-      </Points>
-
-    </Canvas>
+      </Canvas>
+    </div>
   );
 };
 

@@ -69,27 +69,25 @@ const Hero = () => {
         </motion.h1>
 
         {/* TITLE */}
-        <motion.h2
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.1,
-          }}
-          className="mt-8 max-w-5xl text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
-        >
+<motion.h2
+  initial={{ opacity: 0, y: 25 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 0.8,
+    delay: 0.1,
+  }}
+  className="mt-8 max-w-6xl text-3xl font-black leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
+>
 
-          Building{" "}
+  Building{" "}
 
-          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-500 bg-clip-text text-transparent">
-            Scalable Software
-          </span>
+  <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-500 bg-clip-text text-transparent">
+    Scalable Software
+  </span>
 
-          <br />
+  {" "} & Modern Digital Experiences
 
-          & Modern Digital Experiences
-
-        </motion.h2>
+</motion.h2>
 
         {/* DESCRIPTION */}
         <motion.p

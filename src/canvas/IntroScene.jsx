@@ -1,5 +1,7 @@
 "use client";
 
+import {useMemo, useRef } from "react";
+
 import { Canvas, useFrame } from "@react-three/fiber";
 
 import {
@@ -11,11 +13,7 @@ import {
   PointMaterial,
 } from "@react-three/drei";
 
-import { useRef, useMemo } from "react";
 
-/* =========================================
-   MAIN TECH ORB
-========================================= */
 
 const TechOrb = () => {
 
@@ -36,14 +34,14 @@ const TechOrb = () => {
     <group
       ref={groupRef}
       position={[0, 0.1, 0]}
-      scale={0.78} // SMALLER SIZE
+      scale={0.78}
     >
 
       {/* MAIN CORE */}
       <mesh castShadow>
-        <icosahedronGeometry args={[2.3, 10]} />
+        <icosahedronGeometry args={[2.3, 3]} />
 
-        <meshPhysicalMaterial
+        <meshStandardMaterial
           color="#030712"
           roughness={0.18}
           metalness={1}
@@ -95,7 +93,7 @@ const TechOrb = () => {
       </mesh>
 
       {/* TECH PANELS */}
-      {[...Array(24)].map((_, i) => (
+      {[...Array(12)].map((_, i) => (
         <mesh
           key={i}
           position={[
@@ -128,11 +126,11 @@ const TechOrb = () => {
       ))}
 
       {/* OUTER RINGS */}
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[3.2, 0.012, 16, 200]} />
+<mesh rotation={[Math.PI / 2, 0, 0]}>
+  <torusGeometry args={[3.2, 0.012, 12, 80]} />
 
-        <meshBasicMaterial color="#2563eb" />
-      </mesh>
+  <meshBasicMaterial color="#2563eb" />
+</mesh>
 
       <mesh rotation={[0.5, 1, 0]}>
         <torusGeometry args={[3.5, 0.012, 16, 200]} />
@@ -327,12 +325,20 @@ const DarkOverlay = () => {
 
 const IntroScene = () => {
   return (
-    <Canvas
-      camera={{
-        position: [0, 0, 10],
-        fov: 42,
-      }}
-    >
+<Canvas
+  dpr={[1, 1]}
+  frameloop="always"
+  performance={{ min: 0.5 }}
+  camera={{
+    position: [0, 0, 10],
+    fov: 42,
+  }}
+  gl={{
+    antialias: false,
+    alpha: false,
+    powerPreference: "high-performance",
+  }}
+>
 
       {/* BACKGROUND */}
       <color
@@ -340,11 +346,7 @@ const IntroScene = () => {
         args={["#01030a"]}
       />
 
-      {/* FOG */}
-      <fog
-        attach="fog"
-        args={["#01030a", 5, 16]}
-      />
+
 
       {/* LIGHTS */}
       <ambientLight intensity={0.25} />
@@ -374,8 +376,6 @@ const IntroScene = () => {
         color="#3b82f6"
       />
 
-      {/* ENVIRONMENT */}
-      <Environment preset="night" />
 
       {/* DARK OVERLAY */}
       <DarkOverlay />
