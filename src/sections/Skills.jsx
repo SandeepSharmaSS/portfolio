@@ -19,49 +19,49 @@ const Skills = () => {
 
   const skills = [
     {
-      icon: <Atom size={24} />,
+      icon: <Atom size={22} />,
       title: "React.js",
       level: "Advanced",
       color: "from-cyan-400 to-blue-500",
     },
 
     {
-      icon: <Smartphone size={24} />,
+      icon: <Smartphone size={22} />,
       title: "React Native",
       level: "Professional",
       color: "from-violet-400 to-fuchsia-500",
     },
 
     {
-      icon: <Layers3 size={24} />,
+      icon: <Layers3 size={22} />,
       title: "Angular",
       level: "Enterprise",
       color: "from-red-400 to-orange-500",
     },
 
     {
-      icon: <Globe size={24} />,
+      icon: <Globe size={22} />,
       title: "JavaScript",
       level: "Core Language",
       color: "from-yellow-400 to-amber-500",
     },
 
     {
-      icon: <Database size={24} />,
+      icon: <Database size={22} />,
       title: "MongoDB + MSSQL",
       level: "Database Systems",
       color: "from-emerald-400 to-green-500",
     },
 
     {
-      icon: <Server size={24} />,
-      title: "Node.js + Express.js",
+      icon: <Server size={22} />,
+      title: "Node.js + Express",
       level: "Backend Development",
       color: "from-sky-400 to-indigo-500",
     },
 
     {
-      icon: <Boxes size={24} />,
+      icon: <Boxes size={22} />,
       title: "Three.js",
       level: "Creative Development",
       color: "from-violet-400 to-cyan-500",
@@ -71,13 +71,16 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-[#01030A] py-32"
+      className="relative overflow-hidden bg-[#01030A] py-24 sm:py-28"
     >
 
       {/* BACKGROUND */}
       <TechLinesBackground />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      {/* BG LIGHT */}
+      <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[180px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6">
 
         {/* HEADER */}
         <motion.div
@@ -92,14 +95,12 @@ const Skills = () => {
           transition={{
             duration: 0.7,
           }}
-          viewport={{
-            once: true,
-          }}
+          viewport={{ once: true }}
           className="mx-auto max-w-4xl text-center"
         >
 
           {/* TAG */}
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-5 py-2 text-sm text-blue-300 backdrop-blur-xl">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs text-blue-300 backdrop-blur-xl sm:text-sm">
 
             <Sparkles size={14} />
 
@@ -108,131 +109,128 @@ const Skills = () => {
           </div>
 
           {/* TITLE */}
-          <h2 className="text-5xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
+          <h2 className="text-4xl font-black leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
 
-            Technologies
+            Tech
 
             <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-500 bg-clip-text text-transparent">
               {" "}
-              I Work With
+              Arsenal
             </span>
 
           </h2>
 
           {/* DESC */}
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-gray-400">
+          <p className="mx-auto mt-6 max-w-3xl text-sm leading-7 text-gray-400 sm:text-base sm:leading-8 lg:text-lg">
 
-            Full stack software development skills focused on scalable frontend systems,
-            backend architecture, APIs, databases, mobile applications and immersive
-            digital experiences using modern technologies.
+            Modern frontend engineering, scalable backend
+            architecture and immersive digital experiences
+            crafted with high-performance technologies.
 
           </p>
 
         </motion.div>
 
-        {/* SKILLS */}
-        <div className="relative mt-24">
+{/* SKILLS STACK */}
+<div className="relative mt-20">
 
-          {/* CENTER LINE */}
-          <div className="absolute left-1/2 top-0 hidden h-full w-[1px] -translate-x-1/2 bg-gradient-to-b from-transparent via-blue-500/20 to-transparent lg:block" />
+  {/* CENTER LINE */}
+  <div className="absolute left-5 top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-blue-500/30 to-transparent sm:left-1/2 sm:-translate-x-1/2" />
 
-          <div className="space-y-6">
+  <div className="space-y-14 sm:space-y-16">
 
-            {skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.05,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                className={`flex ${
-                  index % 2 === 0
-                    ? "justify-start"
-                    : "justify-end"
-                }`}
-              >
+    {skills.map((skill, index) => (
 
-                <div className="group relative w-full overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl lg:w-[48%]">
+      <motion.div
+        key={index}
+        initial={{
+          opacity: 0,
+          y: 40,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.6,
+          delay: index * 0.05,
+        }}
+        viewport={{ once: true }}
+        className={`relative flex ${
+          index % 2 === 0
+            ? "sm:justify-start"
+            : "sm:justify-end"
+        }`}
+      >
 
-                  {/* LIGHT */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-0 blur-3xl transition duration-500 group-hover:opacity-10`}
-                  />
+        {/* DOT */}
+        <div className="absolute left-[11px] top-5 z-20 flex h-5 w-5 items-center justify-center rounded-full border border-blue-500/20 bg-[#01030A] sm:left-1/2 sm:-translate-x-1/2">
 
-                  {/* GRID */}
-                  <div className="absolute inset-0 opacity-[0.03]">
+          <div
+            className={`h-2.5 w-2.5 rounded-full bg-gradient-to-r ${skill.color}`}
+          />
 
-                    <div
-                      className="h-full w-full"
-                      style={{
-                        backgroundImage: `
-                          linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                          linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)
-                        `,
-                        backgroundSize: "32px 32px",
-                      }}
-                    />
+        </div>
 
-                  </div>
+        {/* CONTENT */}
+        <motion.div
+          whileHover={{
+            x:
+              index % 2 === 0
+                ? 8
+                : -8,
+          }}
+          className={`ml-12 w-full sm:ml-0 sm:w-[38%] ${
+            index % 2 === 0
+              ? "sm:mr-auto sm:pr-24"
+              : "sm:ml-auto sm:pl-24"
+          }`}
+        >
 
-                  {/* CONTENT */}
-                  <div className="relative z-10 flex items-center justify-between gap-5">
+          {/* CATEGORY */}
+          <p
+            className={`bg-gradient-to-r ${skill.color} bg-clip-text text-[11px] font-semibold uppercase tracking-[0.35em] text-transparent`}
+          >
 
-                    {/* LEFT */}
-                    <div className="flex items-center gap-5">
+            {skill.level}
 
-                      {/* ICON */}
-                      <div
-                        className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${skill.color} text-white`}
-                      >
+          </p>
 
-                        {skill.icon}
+          {/* MAIN */}
+          <div className="mt-4 flex items-center gap-4">
 
-                      </div>
+            {/* ICON */}
+            <div
+              className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${skill.color} text-white shadow-[0_0_30px_rgba(59,130,246,0.25)]`}
+            >
 
-                      {/* TEXT */}
-                      <div>
+              {skill.icon}
 
-                        <h3 className="text-2xl font-black text-white">
+            </div>
 
-                          {skill.title}
+            {/* TITLE */}
+            <div>
 
-                        </h3>
+              <h3 className="text-2xl font-black text-white sm:text-3xl">
 
-                        <p className="mt-2 text-sm uppercase tracking-[0.22em] text-gray-400">
+                {skill.title}
 
-                          {skill.level}
+              </h3>
 
-                        </p>
+              <div className="mt-3 h-[1px] w-28 bg-gradient-to-r from-white/20 to-transparent" />
 
-                      </div>
-
-                    </div>
-
-                    {/* RIGHT LINE */}
-                    <div className="hidden h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent md:block" />
-
-                  </div>
-
-                </div>
-
-              </motion.div>
-            ))}
+            </div>
 
           </div>
 
-        </div>
+        </motion.div>
+
+      </motion.div>
+    ))}
+
+  </div>
+
+</div>
 
       </div>
 
