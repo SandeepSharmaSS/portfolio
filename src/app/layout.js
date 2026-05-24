@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Akhil Sharma | Portfolio",
+  title: "Sandeep Sharma | Portfolio",
   description: "Modern futuristic developer portfolio",
 };
 
