@@ -55,13 +55,13 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-[#01030A] py-32"
+      className="relative overflow-hidden bg-[#01030A] py-20 sm:py-24 lg:py-32"
     >
 
       {/* BG LIGHT */}
-      <div className="absolute left-1/2 top-0 h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[180px]" />
+      <div className="absolute left-1/2 top-0 h-[320px] w-[320px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[140px] sm:h-[450px] sm:w-[450px] sm:blur-[180px]" />
 
-      <div className="absolute right-0 top-1/3 h-[300px] w-[300px] rounded-full bg-violet-500/10 blur-[150px]" />
+      <div className="absolute right-0 top-1/3 h-[220px] w-[220px] rounded-full bg-violet-500/10 blur-[120px] sm:h-[300px] sm:w-[300px] sm:blur-[150px]" />
 
       {/* GRID */}
       <div className="absolute inset-0 opacity-[0.04]">
@@ -82,7 +82,7 @@ const Contact = () => {
       {/* DARK OVERLAY */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#01030A_75%)]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
 
         {/* HEADER */}
         <motion.div
@@ -104,7 +104,7 @@ const Contact = () => {
         >
 
           {/* TAG */}
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-5 py-2 text-sm text-blue-300 backdrop-blur-xl">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs text-blue-300 backdrop-blur-xl sm:mb-8 sm:px-5 sm:text-sm">
 
             <Sparkles size={14} />
 
@@ -113,7 +113,7 @@ const Contact = () => {
           </div>
 
           {/* TITLE */}
-          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl">
+          <h2 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
 
             Let&apos;s Build
 
@@ -129,7 +129,7 @@ const Contact = () => {
           </h2>
 
           {/* DESC */}
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-gray-400">
+          <p className="mx-auto mt-6 max-w-3xl text-sm leading-7 text-gray-400 sm:mt-8 sm:text-base sm:leading-8 lg:text-lg lg:leading-9">
 
             Open for frontend engineering, React.js,
             React Native, Three.js projects and modern
@@ -155,11 +155,11 @@ const Contact = () => {
           viewport={{
             once: true,
           }}
-          className="relative mt-24 overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl"
+          className="relative mt-14 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl sm:mt-20 sm:rounded-[40px]"
         >
 
           {/* LIGHT */}
-          <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-blue-500/10 blur-[120px]" />
+          <div className="absolute left-0 top-0 h-56 w-56 rounded-full bg-blue-500/10 blur-[100px] sm:h-72 sm:w-72 sm:blur-[120px]" />
 
           {/* GRID */}
           <div className="absolute inset-0 opacity-[0.05]">
@@ -180,44 +180,45 @@ const Contact = () => {
           <div className="relative z-10 grid lg:grid-cols-[0.9fr_1.1fr]">
 
             {/* LEFT */}
-            <div className="border-b border-white/10 p-10 lg:border-b-0 lg:border-r">
+            <div className="border-b border-white/10 p-5 sm:p-8 lg:border-b-0 lg:border-r lg:p-10">
 
-              <p className="text-sm uppercase tracking-[0.4em] text-blue-300">
+              <p className="text-xs uppercase tracking-[0.3em] text-blue-300 sm:text-sm sm:tracking-[0.4em]">
                 Contact Information
               </p>
 
-              <h3 className="mt-6 text-4xl font-black leading-tight text-white">
+              <h3 className="mt-5 text-2xl font-black leading-tight text-white sm:mt-6 sm:text-3xl lg:text-4xl">
 
                 Let&apos;s create immersive digital experiences.
 
               </h3>
 
-              {/* EMAIL */}
-              <div className="mt-12 space-y-5">
+              {/* EMAIL + PHONE */}
+              <div className="mt-8 space-y-4 sm:mt-12 sm:space-y-5">
 
+                {/* EMAIL */}
                 <motion.a
                   whileHover={{
-                    x: 6,
+                    x: 4,
                   }}
                   href="mailto:sandeep20ryan@gmail.com"
-                  className="group flex items-center justify-between rounded-[24px] border border-white/10 bg-black/20 p-5 transition duration-300 hover:border-blue-500/20 hover:bg-blue-500/5"
+                  className="group flex items-center justify-between gap-4 rounded-[22px] border border-white/10 bg-black/20 p-4 transition duration-300 hover:border-blue-500/20 hover:bg-blue-500/5 sm:p-5"
                 >
 
-                  <div className="flex items-center gap-5">
+                  <div className="flex min-w-0 items-center gap-4 sm:gap-5">
 
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-blue-300">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-blue-300 sm:h-14 sm:w-14">
 
-                      <Mail size={22} />
+                      <Mail size={20} />
 
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
 
-                      <p className="text-sm text-gray-500">
+                      <p className="text-xs text-gray-500 sm:text-sm">
                         Email
                       </p>
 
-                      <h4 className="mt-1 text-lg font-semibold text-white">
+                      <h4 className="truncate text-sm font-semibold text-white sm:text-base lg:text-lg">
                         sandeep20ryan@gmail.com
                       </h4>
 
@@ -227,7 +228,7 @@ const Contact = () => {
 
                   <ArrowUpRight
                     size={18}
-                    className="text-white transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                    className="shrink-0 text-white transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
                   />
 
                 </motion.a>
@@ -235,27 +236,27 @@ const Contact = () => {
                 {/* PHONE */}
                 <motion.a
                   whileHover={{
-                    x: 6,
+                    x: 4,
                   }}
                   href="tel:+917562870848"
-                  className="group flex items-center justify-between rounded-[24px] border border-white/10 bg-black/20 p-5 transition duration-300 hover:border-blue-500/20 hover:bg-blue-500/5"
+                  className="group flex items-center justify-between gap-4 rounded-[22px] border border-white/10 bg-black/20 p-4 transition duration-300 hover:border-blue-500/20 hover:bg-blue-500/5 sm:p-5"
                 >
 
-                  <div className="flex items-center gap-5">
+                  <div className="flex min-w-0 items-center gap-4 sm:gap-5">
 
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-blue-300">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-blue-300 sm:h-14 sm:w-14">
 
-                      <Phone size={22} />
+                      <Phone size={20} />
 
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
 
-                      <p className="text-sm text-gray-500">
+                      <p className="text-xs text-gray-500 sm:text-sm">
                         Phone
                       </p>
 
-                      <h4 className="mt-1 text-lg font-semibold text-white">
+                      <h4 className="truncate text-sm font-semibold text-white sm:text-base lg:text-lg">
                         +91 7562870848
                       </h4>
 
@@ -265,7 +266,7 @@ const Contact = () => {
 
                   <ArrowUpRight
                     size={18}
-                    className="text-white transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                    className="shrink-0 text-white transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
                   />
 
                 </motion.a>
@@ -275,9 +276,9 @@ const Contact = () => {
             </div>
 
             {/* RIGHT */}
-            <div className="p-10">
+            <div className="p-5 sm:p-8 lg:p-10">
 
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
 
                 {socials.map((item, index) => (
                   <motion.a
@@ -301,9 +302,9 @@ const Contact = () => {
                       once: true,
                     }}
                     whileHover={{
-                      y: -8,
+                      y: -6,
                     }}
-                    className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-black/20 p-6"
+                    className="group relative flex min-h-[220px] flex-col overflow-hidden rounded-[24px] border border-white/10 bg-black/20 p-5 sm:p-6"
                   >
 
                     {/* HOVER GLOW */}
@@ -312,13 +313,13 @@ const Contact = () => {
                     />
 
                     {/* LIGHT */}
-                    <div className="absolute -right-8 top-0 h-32 w-32 rounded-full bg-blue-500/10 blur-[90px]" />
+                    <div className="absolute -right-8 top-0 h-28 w-28 rounded-full bg-blue-500/10 blur-[80px]" />
 
                     {/* TOP */}
                     <div className="relative z-10 flex items-start justify-between">
 
                       {/* ICON */}
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-xl text-blue-300">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-lg text-blue-300 sm:h-14 sm:w-14 sm:text-xl">
 
                         {item.icon}
 
@@ -332,15 +333,15 @@ const Contact = () => {
                     </div>
 
                     {/* CONTENT */}
-                    <div className="relative z-10 mt-10">
+                    <div className="relative z-10 mt-auto pt-10">
 
-                      <h3 className="text-2xl font-black text-white">
+                      <h3 className="text-xl font-black text-white sm:text-2xl">
 
                         {item.title}
 
                       </h3>
 
-                      <p className="mt-3 text-gray-400">
+                      <p className="mt-2 break-words text-sm text-gray-400 sm:mt-3 sm:text-base">
 
                         {item.username}
 
