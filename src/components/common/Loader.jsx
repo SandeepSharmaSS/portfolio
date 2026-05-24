@@ -6,15 +6,21 @@ const Loader = () => {
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-[#020617]">
 
-      {/* BACKGROUND GRID */}
-      <div className="absolute inset-0 opacity-[0.05]">
+      {/* =========================================
+         BACKGROUND
+      ========================================= */}
+
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#081327_0%,#020617_70%)]" />
+
+      {/* GRID */}
+      <div className="absolute inset-0 opacity-[0.04]">
 
         <div
           className="h-full w-full"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)
+              linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)
             `,
             backgroundSize: "60px 60px",
           }}
@@ -22,86 +28,122 @@ const Loader = () => {
 
       </div>
 
-      {/* BLUE GLOW */}
-      <div className="absolute h-[220px] w-[220px] rounded-full bg-blue-500/20 blur-[120px]" />
+      {/* GLOW */}
+      <div className="absolute h-[320px] w-[320px] rounded-full bg-cyan-500/10 blur-[140px]" />
 
-      {/* PURPLE GLOW */}
-      <div className="absolute h-[180px] w-[180px] rounded-full bg-violet-500/20 blur-[100px]" />
+      <div className="absolute h-[240px] w-[240px] rounded-full bg-violet-500/10 blur-[120px]" />
 
-      {/* CENTER */}
-      <div className="relative z-10 flex flex-col items-center">
+      {/* =========================================
+         MAIN SYMBOL
+      ========================================= */}
 
-        {/* LOGO TEXT */}
-        <motion.h1
-          initial={{
-            opacity: 0,
-            letterSpacing: "0.5em",
-            scale: 0.8,
-          }}
-          animate={{
-            opacity: 1,
-            letterSpacing: "0.15em",
-            scale: 1,
-          }}
-          transition={{
-            duration: 1,
-          }}
-          className="relative text-3xl font-black uppercase tracking-[0.15em] text-white md:text-4xl"
-        >
+      <div className="relative z-10 flex items-center justify-center px-6">
 
-          {/* GLOW */}
-          <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-500 bg-clip-text text-transparent blur-xl">
+        <div className="relative flex items-center justify-center">
 
-            AKHIL
+          {/* OUTER RING */}
+          <motion.div
+            animate={{
+              rotate: 360,
+            }}
+            transition={{
+              duration: 24,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute h-[220px] w-[220px] rounded-full border border-cyan-400/10 sm:h-[280px] sm:w-[280px]"
+          >
 
-          </span>
+            <div className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 rounded-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.9)]" />
 
-          {/* MAIN TEXT */}
-          <span className="relative bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-500 bg-clip-text text-transparent">
+            <div className="absolute bottom-0 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-violet-400 shadow-[0_0_15px_rgba(167,139,250,0.9)]" />
 
-            AKHIL
+            <div className="absolute left-0 top-1/2 h-3 w-3 -translate-y-1/2 rounded-full bg-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.9)]" />
 
-          </span>
+            <div className="absolute right-0 top-1/2 h-3 w-3 -translate-y-1/2 rounded-full bg-cyan-300 shadow-[0_0_15px_rgba(103,232,249,0.9)]" />
 
-        </motion.h1>
+          </motion.div>
 
-        {/* TECH LINE */}
-        <motion.div
-          initial={{
-            width: 0,
-            opacity: 0,
-          }}
-          animate={{
-            width: "120px",
-            opacity: 1,
-          }}
-          transition={{
-            duration: 1,
-            delay: 0.1,
-          }}
-          className="mt-3 h-[2px] rounded-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
-        />
+          {/* SECOND RING */}
+          <motion.div
+            animate={{
+              rotate: -360,
+            }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute flex h-[170px] w-[170px] items-center justify-center rounded-full border border-blue-400/15 sm:h-[220px] sm:w-[220px]"
+          >
 
-        {/* SUBTEXT */}
-        <motion.p
-          initial={{
-            opacity: 0,
-            y: 8,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.7,
-            delay: 0.2,
-          }}
-          className="mt-3 text-[10px] uppercase tracking-[0.4em] text-blue-300"
-        >
+            <div className="h-[90px] w-[90px] rotate-45 border border-cyan-400/20 sm:h-[110px] sm:w-[110px]" />
 
-          Initializing Experience
+          </motion.div>
 
-        </motion.p>
+          {/* CENTER CORE */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: 0.7,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            transition={{
+              duration: 1,
+            }}
+            className="relative flex h-[120px] w-[120px] items-center justify-center rounded-full border border-cyan-400/20 bg-[#07101E]/90 shadow-[0_0_60px_rgba(34,211,238,0.15)] backdrop-blur-2xl sm:h-[150px] sm:w-[150px]"
+          >
+
+            {/* INNER GLOW */}
+            <div className="absolute h-[70px] w-[70px] rounded-full bg-cyan-400/10 blur-[35px]" />
+
+            {/* SYMBOL */}
+            <div className="absolute flex items-center justify-center">
+
+              <div className="absolute h-[46px] w-[46px] rotate-45 border border-cyan-300/60 sm:h-[58px] sm:w-[58px]" />
+
+              <div className="absolute h-[22px] w-[22px] rounded-full border border-violet-400/70 sm:h-[28px] sm:w-[28px]" />
+
+              <motion.div
+                animate={{
+                  scale: [1, 1.4, 1],
+                  opacity: [0.7, 1, 0.7],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                }}
+                className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_20px_rgba(103,232,249,1)]"
+              />
+
+            </div>
+
+            {/* CENTER TEXT */}
+{/* CENTER TEXT */}
+<motion.p
+  initial={{
+    opacity: 0,
+  }}
+  animate={{
+    opacity: 1,
+  }}
+  transition={{
+    duration: 1,
+    delay: 0.3,
+  }}
+  className="absolute whitespace-nowrap text-center text-[5px] font-medium uppercase tracking-[0.18em] text-cyan-100 sm:text-[7px] md:text-[8px]"
+>
+
+  Initializing Neural Interface
+
+</motion.p>
+
+          </motion.div>
+
+        </div>
 
       </div>
 
