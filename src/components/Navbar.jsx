@@ -1,14 +1,11 @@
 "use client";
 
 import Image from "next/image";
-
 import { useEffect, useState } from "react";
-
 import {
   AnimatePresence,
   motion,
 } from "framer-motion";
-
 import {
   Menu,
   X,
@@ -16,7 +13,6 @@ import {
 } from "lucide-react";
 
 const Navbar = () => {
-
   const [open, setOpen] =
     useState(false);
 
@@ -24,7 +20,6 @@ const Navbar = () => {
     useState(false);
 
   useEffect(() => {
-
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -39,7 +34,6 @@ const Navbar = () => {
         "scroll",
         handleScroll
       );
-
   }, []);
 
   const navItems = [
@@ -52,90 +46,69 @@ const Navbar = () => {
 
   return (
     <>
-      {/* =========================================
-         SEO / ACCESSIBILITY
-      ========================================= */}
-
-      <nav
-        aria-label="Main Navigation"
-        className="fixed inset-x-0 top-0 z-50"
-      />
-
-      {/* =========================================
-         CENTER NAVBAR
-      ========================================= */}
+      {/* NAVBAR */}
 
       <AnimatePresence>
-
         {open && (
           <motion.div
             initial={{
               opacity: 0,
-              y: -25,
-              scale: 0.95,
+              y: -20,
             }}
             animate={{
               opacity: 1,
               y: 0,
-              scale: 1,
             }}
             exit={{
               opacity: 0,
-              y: -25,
-              scale: 0.95,
+              y: -20,
             }}
             transition={{
-              duration: 0.3,
-              ease: "easeOut",
+              duration: 0.25,
             }}
-            className="fixed left-1/2 top-4 z-40 w-[92%] max-w-[760px] -translate-x-1/2 sm:top-5"
+            className="fixed left-1/2 top-3 z-40 w-[94%] max-w-[680px] -translate-x-1/2"
           >
-
             <div
-              className={`overflow-hidden rounded-[28px] border transition-all duration-300 ${
-                scrolled
-                  ? "border-purple-500/20 bg-[#060816]/85 shadow-[0_0_60px_rgba(139,92,246,0.18)]"
-                  : "border-white/10 bg-[#0B1220]/75"
-              } backdrop-blur-3xl`}
-            >
 
-              <div className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:px-4 sm:py-3">
+  className={`overflow-hidden rounded-[36px] border transition-all duration-300 ${
+    scrolled
+      ? "border-purple-500/20 bg-[#060816]/85 shadow-[0_0_40px_rgba(139,92,246,0.15)]"
+      : "border-white/10 bg-[#0B1220]/80"
+  } backdrop-blur-2xl`}
+>
+              <div className="flex flex-col gap-3 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-4 sm:py-2">
 
                 {/* NAV LINKS */}
-                <div className="flex flex-wrap items-center justify-center gap-2">
+                <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
 
                   {navItems.map((item) => (
-
                     <a
                       key={item}
                       href={`#${item.toLowerCase()}`}
                       onClick={() =>
                         setOpen(false)
                       }
-                      className="rounded-full px-4 py-2 text-[13px] font-medium text-gray-300 transition-all duration-300 hover:scale-105 hover:bg-purple-500/10 hover:text-white sm:px-5 sm:text-[14px]"
+                      className="rounded-full px-3 py-2 text-center text-[13px] font-medium text-gray-300 transition-all duration-300 hover:bg-purple-500/10 hover:text-white"
                     >
-
                       {item}
-
                     </a>
                   ))}
 
                 </div>
 
-                {/* RESUME */}
+                {/* RESUME BUTTON */}
                 <div className="flex justify-center sm:justify-end">
 
                   <a
                     href="/resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-600 px-5 py-2.5 text-[13px] font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-blue-500/30 sm:px-6 sm:text-[14px]"
+                    className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-600 px-4 py-2 text-[12px] font-semibold text-white transition-all duration-300 hover:scale-105"
                   >
-
                     Resume
 
                     <Download
-                      size={16}
+                      size={15}
                       className="transition duration-300 group-hover:translate-y-[1px]"
                     />
 
@@ -144,19 +117,14 @@ const Navbar = () => {
                 </div>
 
               </div>
-
             </div>
-
           </motion.div>
         )}
-
       </AnimatePresence>
 
-      {/* =========================================
-         PROFILE BUTTON
-      ========================================= */}
+      {/* MENU BUTTON */}
 
-      <div className="fixed right-3 top-3 z-50 sm:right-5 sm:top-5">
+      <div className="fixed right-3 top-3 z-50">
 
         <button
           aria-label={
@@ -167,22 +135,19 @@ const Navbar = () => {
           onClick={() =>
             setOpen(!open)
           }
-          className="group relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-[#0B1220]/80 text-white shadow-[0_8px_30px_rgba(0,0,0,0.45)] backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-purple-500/40 sm:h-12 sm:w-12"
+          className="group relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-[#0B1220]/80 text-white shadow-lg backdrop-blur-xl transition-all duration-300 hover:scale-105"
         >
 
           {/* GLOW */}
           <div className="absolute inset-0 rounded-full bg-purple-500/20 opacity-0 blur-xl transition duration-300 group-hover:opacity-100" />
 
-          {/* ICON / IMAGE */}
+          {/* ICON / PROFILE */}
           {open ? (
-
             <X
-              size={20}
-              className="relative z-10"
+              size={22}
+              className="relative z-18"
             />
-
           ) : (
-
             <div className="relative z-10 h-full w-full overflow-hidden rounded-full">
 
               <Image
@@ -191,13 +156,12 @@ const Navbar = () => {
                 fill
                 priority
                 quality={80}
-                sizes="48px"
+                sizes="40px"
                 className="object-cover"
               />
 
             </div>
           )}
-
         </button>
 
       </div>

@@ -3,65 +3,27 @@
 import { motion } from "framer-motion";
 
 import {
-  Mail,
-  Phone,
-  ArrowUpRight,
   Sparkles,
+  ArrowUpRight,
 } from "lucide-react";
 
 import {
   FaGithub,
   FaLinkedin,
-  FaInstagram,
-  FaFacebookF,
 } from "react-icons/fa";
 
 const Contact = () => {
 
-  const socials = [
-    {
-      icon: <FaLinkedin />,
-      title: "LinkedIn",
-      username: "sandeep-sharma",
-      link: "http://www.linkedin.com/in/sandeep-sharma-6a4435349",
-      gradient: "from-blue-500/20 to-cyan-500/10",
-    },
-
-    {
-      icon: <FaGithub />,
-      title: "GitHub",
-      username: "SandeepSharmaSS",
-      link: "https://github.com/SandeepSharmaSS",
-      gradient: "from-violet-500/20 to-indigo-500/10",
-    },
-
-    {
-      icon: <FaInstagram />,
-      title: "Instagram",
-      username: "@trekwith_akhil",
-      link: "https://www.instagram.com/trekwith_akhil",
-      gradient: "from-pink-500/20 to-fuchsia-500/10",
-    },
-
-    {
-      icon: <FaFacebookF />,
-      title: "Facebook",
-      username: "Social Profile",
-      link: "https://www.facebook.com/share/1B4ttF6ga9",
-      gradient: "from-sky-500/20 to-blue-500/10",
-    },
-  ];
-
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-[#01030A] py-20 sm:py-24 lg:py-32"
+      className="relative overflow-hidden bg-[#01030A] py-24 sm:py-28"
     >
 
       {/* BG LIGHT */}
-      <div className="absolute left-1/2 top-0 h-[320px] w-[320px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[140px] sm:h-[450px] sm:w-[450px] sm:blur-[180px]" />
+      <div className="absolute left-1/2 top-0 h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[140px]" />
 
-      <div className="absolute right-0 top-1/3 h-[220px] w-[220px] rounded-full bg-violet-500/10 blur-[120px] sm:h-[300px] sm:w-[300px] sm:blur-[150px]" />
+      <div className="absolute right-0 top-1/3 h-[260px] w-[260px] rounded-full bg-violet-500/10 blur-[120px]" />
 
       {/* GRID */}
       <div className="absolute inset-0 opacity-[0.04]">
@@ -79,12 +41,12 @@ const Contact = () => {
 
       </div>
 
-      {/* DARK OVERLAY */}
+      {/* OVERLAY */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#01030A_75%)]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-6">
 
-        {/* HEADER */}
+        {/* TOP CONTENT */}
         <motion.div
           initial={{
             opacity: 0,
@@ -100,11 +62,11 @@ const Contact = () => {
           viewport={{
             once: true,
           }}
-          className="mx-auto max-w-4xl text-center"
+          className="text-center"
         >
 
           {/* TAG */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs text-blue-300 backdrop-blur-xl sm:mb-8 sm:px-5 sm:text-sm">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs text-blue-300 backdrop-blur-xl sm:text-sm">
 
             <Sparkles size={14} />
 
@@ -113,33 +75,30 @@ const Contact = () => {
           </div>
 
           {/* TITLE */}
-          <h2 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          <h2 className="text-4xl font-black leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
 
-            Let&apos;s Build
+            Have An Idea?
 
             <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-500 bg-clip-text text-transparent">
               {" "}
-              Something
+              Let&apos;s Build It.
             </span>
-
-            <br />
-
-            Amazing Together
 
           </h2>
 
-          {/* DESC */}
-          <p className="mx-auto mt-6 max-w-3xl text-sm leading-7 text-gray-400 sm:mt-8 sm:text-base sm:leading-8 lg:text-lg lg:leading-9">
+          {/* DESCRIPTION */}
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-gray-400 sm:text-base sm:leading-8 lg:text-lg">
 
-            Open for frontend engineering, React.js,
-            React Native, Three.js projects and modern
-            digital collaborations.
+            I love building modern, scalable and immersive
+            web experiences with React.js, Next.js and
+            beautiful UI systems. Always open for exciting
+            collaborations and creative frontend projects.
 
           </p>
 
         </motion.div>
 
-        {/* MAIN CARD */}
+        {/* MAIN CONTAINER */}
         <motion.div
           initial={{
             opacity: 0,
@@ -155,11 +114,11 @@ const Contact = () => {
           viewport={{
             once: true,
           }}
-          className="relative mt-14 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl sm:mt-20 sm:rounded-[40px]"
+          className="relative mt-14 overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl"
         >
 
-          {/* LIGHT */}
-          <div className="absolute left-0 top-0 h-56 w-56 rounded-full bg-blue-500/10 blur-[100px] sm:h-72 sm:w-72 sm:blur-[120px]" />
+          {/* INNER LIGHT */}
+          <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-blue-500/10 blur-[120px]" />
 
           {/* GRID */}
           <div className="absolute inset-0 opacity-[0.05]">
@@ -177,182 +136,124 @@ const Contact = () => {
 
           </div>
 
-          <div className="relative z-10 grid lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative z-10 flex flex-col items-center justify-between gap-10 px-6 py-10 sm:px-10 sm:py-14 lg:flex-row lg:px-14">
 
             {/* LEFT */}
-            <div className="border-b border-white/10 p-5 sm:p-8 lg:border-b-0 lg:border-r lg:p-10">
+            <div className="max-w-2xl">
 
-              <p className="text-xs uppercase tracking-[0.3em] text-blue-300 sm:text-sm sm:tracking-[0.4em]">
-                Contact Information
-              </p>
+              <h3 className="text-3xl font-black leading-tight text-white sm:text-4xl">
 
-              <h3 className="mt-5 text-2xl font-black leading-tight text-white sm:mt-6 sm:text-3xl lg:text-4xl">
-
-                Let&apos;s create immersive digital experiences.
+                Let&apos;s create something
+                meaningful together.
 
               </h3>
 
-              {/* EMAIL + PHONE */}
-              <div className="mt-8 space-y-4 sm:mt-12 sm:space-y-5">
+              <p className="mt-5 text-sm leading-7 text-gray-400 sm:text-base sm:leading-8">
 
-                {/* EMAIL */}
-                <motion.a
-                  whileHover={{
-                    x: 4,
-                  }}
-                  href="mailto:sandeep20ryan@gmail.com"
-                  className="group flex items-center justify-between gap-4 rounded-[22px] border border-white/10 bg-black/20 p-4 transition duration-300 hover:border-blue-500/20 hover:bg-blue-500/5 sm:p-5"
-                >
+                Whether you need a modern frontend,
+                interactive UI, responsive website or
+                full React.js experience — I&apos;m always
+                interested in working on impactful
+                products and innovative ideas.
 
-                  <div className="flex min-w-0 items-center gap-4 sm:gap-5">
+              </p>
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-blue-300 sm:h-14 sm:w-14">
+              {/* EMAIL */}
+              <a
+                href="mailto:sandeep20ryan@gmail.com"
+                className="mt-8 inline-flex items-center gap-3 rounded-full border border-blue-500/20 bg-blue-500/10 px-5 py-3 text-sm font-medium text-blue-300 transition duration-300 hover:scale-105 hover:bg-blue-500/20"
+              >
 
-                      <Mail size={20} />
+                sandeep20ryan@gmail.com
 
-                    </div>
+                <ArrowUpRight size={18} />
 
-                    <div className="min-w-0">
-
-                      <p className="text-xs text-gray-500 sm:text-sm">
-                        Email
-                      </p>
-
-                      <h4 className="truncate text-sm font-semibold text-white sm:text-base lg:text-lg">
-                        sandeep20ryan@gmail.com
-                      </h4>
-
-                    </div>
-
-                  </div>
-
-                  <ArrowUpRight
-                    size={18}
-                    className="shrink-0 text-white transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                  />
-
-                </motion.a>
-
-                {/* PHONE */}
-                <motion.a
-                  whileHover={{
-                    x: 4,
-                  }}
-                  href="tel:+917562870848"
-                  className="group flex items-center justify-between gap-4 rounded-[22px] border border-white/10 bg-black/20 p-4 transition duration-300 hover:border-blue-500/20 hover:bg-blue-500/5 sm:p-5"
-                >
-
-                  <div className="flex min-w-0 items-center gap-4 sm:gap-5">
-
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-blue-300 sm:h-14 sm:w-14">
-
-                      <Phone size={20} />
-
-                    </div>
-
-                    <div className="min-w-0">
-
-                      <p className="text-xs text-gray-500 sm:text-sm">
-                        Phone
-                      </p>
-
-                      <h4 className="truncate text-sm font-semibold text-white sm:text-base lg:text-lg">
-                        +91 7562870848
-                      </h4>
-
-                    </div>
-
-                  </div>
-
-                  <ArrowUpRight
-                    size={18}
-                    className="shrink-0 text-white transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                  />
-
-                </motion.a>
-
-              </div>
+              </a>
 
             </div>
 
-            {/* RIGHT */}
-            <div className="p-5 sm:p-8 lg:p-10">
+            {/* RIGHT SOCIALS */}
+            <div className="flex w-full max-w-md flex-col gap-4">
 
-              <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
+              {/* LINKEDIN */}
+              <motion.a
+                whileHover={{
+                  x: 6,
+                }}
+                href="https://www.linkedin.com/in/sandeep-sharma-6a4435349"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between rounded-[26px] border border-white/10 bg-black/20 p-5 transition duration-300 hover:border-blue-500/20 hover:bg-blue-500/5"
+              >
 
-                {socials.map((item, index) => (
-                  <motion.a
-                    key={index}
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{
-                      opacity: 0,
-                      y: 40,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      duration: 0.7,
-                      delay: index * 0.08,
-                    }}
-                    viewport={{
-                      once: true,
-                    }}
-                    whileHover={{
-                      y: -6,
-                    }}
-                    className="group relative flex min-h-[220px] flex-col overflow-hidden rounded-[24px] border border-white/10 bg-black/20 p-5 sm:p-6"
-                  >
+                <div className="flex items-center gap-4">
 
-                    {/* HOVER GLOW */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 transition duration-500 group-hover:opacity-100`}
-                    />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-2xl text-blue-300">
 
-                    {/* LIGHT */}
-                    <div className="absolute -right-8 top-0 h-28 w-28 rounded-full bg-blue-500/10 blur-[80px]" />
+                    <FaLinkedin />
 
-                    {/* TOP */}
-                    <div className="relative z-10 flex items-start justify-between">
+                  </div>
 
-                      {/* ICON */}
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-lg text-blue-300 sm:h-14 sm:w-14 sm:text-xl">
+                  <div>
 
-                        {item.icon}
+                    <h4 className="text-lg font-bold text-white">
+                      LinkedIn
+                    </h4>
 
-                      </div>
+                    <p className="text-sm text-gray-400">
+                      Connect professionally
+                    </p>
 
-                      <ArrowUpRight
-                        size={17}
-                        className="text-white transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                      />
+                  </div>
 
-                    </div>
+                </div>
 
-                    {/* CONTENT */}
-                    <div className="relative z-10 mt-auto pt-10">
+                <ArrowUpRight
+                  size={20}
+                  className="text-white transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                />
 
-                      <h3 className="text-xl font-black text-white sm:text-2xl">
+              </motion.a>
 
-                        {item.title}
+              {/* GITHUB */}
+              <motion.a
+                whileHover={{
+                  x: 6,
+                }}
+                href="https://github.com/SandeepSharmaSS"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between rounded-[26px] border border-white/10 bg-black/20 p-5 transition duration-300 hover:border-violet-500/20 hover:bg-violet-500/5"
+              >
 
-                      </h3>
+                <div className="flex items-center gap-4">
 
-                      <p className="mt-2 break-words text-sm text-gray-400 sm:mt-3 sm:text-base">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-violet-500/20 bg-violet-500/10 text-2xl text-violet-300">
 
-                        {item.username}
+                    <FaGithub />
 
-                      </p>
+                  </div>
 
-                    </div>
+                  <div>
 
-                  </motion.a>
-                ))}
+                    <h4 className="text-lg font-bold text-white">
+                      GitHub
+                    </h4>
 
-              </div>
+                    <p className="text-sm text-gray-400">
+                      Explore my projects
+                    </p>
+
+                  </div>
+
+                </div>
+
+                <ArrowUpRight
+                  size={20}
+                  className="text-white transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                />
+
+              </motion.a>
 
             </div>
 
