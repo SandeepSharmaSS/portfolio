@@ -3,6 +3,8 @@
 import {
   useMemo,
   useRef,
+  useEffect,
+  useState,
 } from "react";
 
 import {
@@ -23,7 +25,7 @@ import {
    TECH ORB
 ========================================= */
 
-const TechOrb = () => {
+const TechOrb = ({ mobile }) => {
 
   const groupRef = useRef();
 
@@ -43,14 +45,10 @@ const TechOrb = () => {
   return (
     <group
       ref={groupRef}
-      position={[0, 0.1, 0]}
+      position={[0, 0, 0]}
       scale={
-        typeof window !== "undefined" &&
-        window.innerWidth < 640
-          ? 0.48
-          : typeof window !== "undefined" &&
-            window.innerWidth < 1024
-          ? 0.62
+        mobile
+          ? 0.42
           : 0.78
       }
     >
@@ -86,7 +84,7 @@ const TechOrb = () => {
 
       </mesh>
 
-      {/* CENTER BLUE LIGHT */}
+      {/* CENTER LIGHT */}
       <mesh>
 
         <sphereGeometry
@@ -215,60 +213,54 @@ const TechOrb = () => {
    TECH LINES
 ========================================= */
 
-const TechLines = () => {
+const TechLines = ({ mobile }) => {
 
   return (
     <group>
 
-      {/* TOP */}
       <Line
-        points={[
-          [-8, 2.5, -2],
-          [-5, 2, -1],
-          [-2, 2.4, 0],
-          [2, 2.2, 0],
-          [5, 1.8, -1],
-          [8, 2.5, -2],
-        ]}
+        points={
+          mobile
+            ? [
+                [-5, 1.8, -2],
+                [-2, 1.5, -1],
+                [0, 1.8, 0],
+                [2, 1.5, -1],
+                [5, 1.8, -2],
+              ]
+            : [
+                [-8, 2.5, -2],
+                [-5, 2, -1],
+                [-2, 2.4, 0],
+                [2, 2.2, 0],
+                [5, 1.8, -1],
+                [8, 2.5, -2],
+              ]
+        }
         color="#172554"
         lineWidth={1}
       />
 
-      {/* BOTTOM */}
       <Line
-        points={[
-          [-8, -2.5, -2],
-          [-5, -2, -1],
-          [-2, -2.4, 0],
-          [2, -2.2, 0],
-          [5, -1.8, -1],
-          [8, -2.5, -2],
-        ]}
+        points={
+          mobile
+            ? [
+                [-5, -1.8, -2],
+                [-2, -1.5, -1],
+                [0, -1.8, 0],
+                [2, -1.5, -1],
+                [5, -1.8, -2],
+              ]
+            : [
+                [-8, -2.5, -2],
+                [-5, -2, -1],
+                [-2, -2.4, 0],
+                [2, -2.2, 0],
+                [5, -1.8, -1],
+                [8, -2.5, -2],
+              ]
+        }
         color="#1d4ed8"
-        lineWidth={1}
-      />
-
-      {/* LEFT */}
-      <Line
-        points={[
-          [-6, 3, -1],
-          [-5, 1, 0],
-          [-6, -1, 0],
-          [-5, -3, 0],
-        ]}
-        color="#581c87"
-        lineWidth={1}
-      />
-
-      {/* RIGHT */}
-      <Line
-        points={[
-          [6, 3, -1],
-          [5, 1, 0],
-          [6, -1, 0],
-          [5, -3, 0],
-        ]}
-        color="#2563eb"
         lineWidth={1}
       />
 
@@ -326,94 +318,40 @@ const Particles = () => {
 };
 
 /* =========================================
-   DARK CINEMATIC OVERLAY
-========================================= */
-
-const DarkOverlay = () => {
-
-  return (
-    <>
-      <mesh position={[0, 0, -8]}>
-
-        <planeGeometry
-          args={[40, 25]}
-        />
-
-        <meshBasicMaterial
-          color="#000000"
-          transparent
-          opacity={0.45}
-        />
-
-      </mesh>
-
-      <mesh position={[-10, 0, -7]}>
-
-        <planeGeometry
-          args={[12, 25]}
-        />
-
-        <meshBasicMaterial
-          color="#000000"
-          transparent
-          opacity={0.65}
-        />
-
-      </mesh>
-
-      <mesh position={[10, 0, -7]}>
-
-        <planeGeometry
-          args={[12, 25]}
-        />
-
-        <meshBasicMaterial
-          color="#000000"
-          transparent
-          opacity={0.65}
-        />
-
-      </mesh>
-
-      <mesh position={[0, 7, -7]}>
-
-        <planeGeometry
-          args={[40, 10]}
-        />
-
-        <meshBasicMaterial
-          color="#000000"
-          transparent
-          opacity={0.55}
-        />
-
-      </mesh>
-
-      <mesh position={[0, -7, -7]}>
-
-        <planeGeometry
-          args={[40, 10]}
-        />
-
-        <meshBasicMaterial
-          color="#000000"
-          transparent
-          opacity={0.7}
-        />
-
-      </mesh>
-    </>
-  );
-};
-
-/* =========================================
    MAIN INTRO SCENE
 ========================================= */
 
 const IntroScene = () => {
 
+  const [mobile, setMobile] =
+    useState(false);
+
+  useEffect(() => {
+
+    const checkMobile = () => {
+
+      setMobile(
+        window.innerWidth < 640
+      );
+    };
+
+    checkMobile();
+
+    window.addEventListener(
+      "resize",
+      checkMobile
+    );
+
+    return () =>
+      window.removeEventListener(
+        "resize",
+        checkMobile
+      );
+
+  }, []);
+
   return (
-    <div className="h-[420px] w-full sm:h-[560px] md:h-[700px] lg:h-screen">
+    <div className="h-full w-full overflow-hidden">
 
       <Canvas
         dpr={[1, 1]}
@@ -422,8 +360,12 @@ const IntroScene = () => {
           min: 0.5,
         }}
         camera={{
-          position: [0, 0, 10],
-          fov: 42,
+          position: mobile
+            ? [0, 0, 12]
+            : [0, 0, 10],
+          fov: mobile
+            ? 52
+            : 42,
         }}
         gl={{
           antialias: false,
@@ -433,7 +375,7 @@ const IntroScene = () => {
         }}
       >
 
-        {/* BACKGROUND */}
+        {/* BG */}
         <color
           attach="background"
           args={["#01030a"]}
@@ -462,30 +404,30 @@ const IntroScene = () => {
           color="#7c3aed"
         />
 
-        {/* CENTER LIGHT */}
         <pointLight
           position={[0, 0, 2]}
           intensity={18}
           color="#3b82f6"
         />
 
-        {/* DARK OVERLAY */}
-        <DarkOverlay />
-
         {/* LINES */}
-        <TechLines />
+        <TechLines
+          mobile={mobile}
+        />
 
         {/* PARTICLES */}
         <Particles />
 
-        {/* MAIN OBJECT */}
+        {/* MAIN ORB */}
         <Float
           speed={1}
           rotationIntensity={0.15}
           floatIntensity={0.2}
         >
 
-          <TechOrb />
+          <TechOrb
+            mobile={mobile}
+          />
 
         </Float>
 
@@ -496,7 +438,7 @@ const IntroScene = () => {
           autoRotate={false}
         />
 
-        {/* ENVIRONMENT */}
+        {/* ENV */}
         <Environment preset="city" />
 
       </Canvas>
