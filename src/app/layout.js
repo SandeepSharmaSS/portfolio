@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title:
-    "Sandeep Sharma | Full Stack Developer",
+    "Sandeep Sharma | Software Developer",
 
   description:
     "Modern futuristic full stack developer portfolio built with Next.js, React, Three.js and Tailwind CSS.",
