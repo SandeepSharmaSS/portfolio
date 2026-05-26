@@ -80,11 +80,11 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative overflow-hidden bg-[#01030A] py-20 sm:py-24 lg:py-28"
+      className="relative overflow-hidden bg-[#01030A] py-20 sm:py-28"
     >
 
       {/* BG LIGHT */}
-      <div className="absolute left-1/2 top-0 h-[320px] w-[320px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[120px] sm:h-[500px] sm:w-[500px] sm:blur-[180px]" />
+      <div className="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[180px]" />
 
       {/* GRID */}
       <div className="absolute inset-0 opacity-[0.03]">
@@ -102,7 +102,8 @@ const Projects = () => {
 
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+      {/* ONLY RESPONSIVE FIXES */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6">
 
         {/* HEADER */}
         <motion.div
@@ -123,15 +124,17 @@ const Projects = () => {
           className="text-center"
         >
 
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-[11px] text-blue-300 backdrop-blur-xl sm:text-sm">
+          <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-[10px] text-blue-300 backdrop-blur-xl sm:text-sm">
 
-            <Sparkles size={14} />
+            <Sparkles size={14} className="shrink-0" />
 
-            Featured Projects
+            <span className="truncate">
+              Featured Projects
+            </span>
 
           </div>
 
-          <h2 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl">
+          <h2 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
 
             Selected
 
@@ -142,7 +145,7 @@ const Projects = () => {
 
           </h2>
 
-          <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-gray-400 sm:mt-6 sm:text-base sm:leading-8 lg:text-lg">
+          <p className="mx-auto mt-6 max-w-3xl px-1 text-sm leading-7 text-gray-400 sm:text-base sm:leading-8 lg:text-lg">
 
             Frontend systems, mobile applications,
             dashboards and immersive digital experiences
@@ -153,7 +156,7 @@ const Projects = () => {
         </motion.div>
 
         {/* TIMELINE */}
-        <div className="relative mt-14 sm:mt-20">
+        <div className="relative mt-16 sm:mt-20">
 
           {/* VERTICAL LINE */}
           <div className="absolute left-[18px] top-0 h-full w-[1px] bg-gradient-to-b from-blue-500/40 via-violet-500/30 to-transparent sm:left-1/2 sm:-translate-x-1/2" />
@@ -182,7 +185,7 @@ const Projects = () => {
                   once: true,
                   amount: 0.4,
                 }}
-                className={`relative flex flex-col gap-5 sm:gap-0 ${
+                className={`relative flex w-full flex-col gap-6 sm:gap-0 ${
                   index % 2 === 0
                     ? "sm:flex-row"
                     : "sm:flex-row-reverse"
@@ -197,7 +200,7 @@ const Projects = () => {
                 </div>
 
                 {/* CONTENT */}
-                <div className="ml-12 w-full sm:ml-0 sm:w-[45%]">
+                <div className="ml-12 w-[calc(100%-3rem)] sm:ml-0 sm:w-[45%]">
 
                   <motion.div
                     whileHover={{
@@ -206,18 +209,18 @@ const Projects = () => {
                           ? 8
                           : -8,
                     }}
-                    className="group rounded-3xl border border-white/5 bg-white/[0.02] p-5 backdrop-blur-sm transition duration-300 hover:border-blue-500/20 sm:bg-transparent sm:p-0 sm:backdrop-blur-0"
+                    className="group w-full"
                   >
 
                     {/* CATEGORY */}
-                    <p className="text-[10px] uppercase tracking-[0.28em] text-blue-300 sm:text-[11px]">
+                    <p className="break-words text-[10px] uppercase tracking-[0.28em] text-blue-300 sm:text-[11px] sm:tracking-[0.35em]">
 
                       {project.category}
 
                     </p>
 
                     {/* TITLE */}
-                    <div className="mt-3 flex items-center gap-3">
+                    <div className="mt-3 flex w-full items-center gap-3">
 
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-blue-300 sm:h-12 sm:w-12">
 
@@ -225,7 +228,7 @@ const Projects = () => {
 
                       </div>
 
-                      <h3 className="text-xl font-black leading-tight text-white sm:text-3xl">
+                      <h3 className="break-words text-xl font-black leading-tight text-white sm:text-3xl">
 
                         {project.title}
 
@@ -234,19 +237,19 @@ const Projects = () => {
                     </div>
 
                     {/* DESC */}
-                    <p className="mt-4 text-sm leading-7 text-gray-400 sm:mt-5 sm:text-base sm:leading-8">
+                    <p className="mt-5 break-words text-sm leading-7 text-gray-400 sm:text-base sm:leading-8">
 
                       {project.desc}
 
                     </p>
 
                     {/* STACK */}
-                    <div className="mt-5 flex flex-wrap gap-2">
+                    <div className="mt-6 flex flex-wrap gap-2 overflow-hidden">
 
                       {project.stack.map((item, i) => (
                         <span
                           key={i}
-                          className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] text-gray-400 sm:text-xs"
+                          className="break-all text-xs text-gray-500"
                         >
 
                           #{item}
@@ -257,13 +260,13 @@ const Projects = () => {
                     </div>
 
                     {/* LINK */}
-                    <div className="mt-6 flex items-center gap-2 text-sm text-white">
+                    <div className="mt-6 flex flex-wrap items-center gap-2 text-sm text-white">
 
                       View Project
 
                       <ArrowUpRight
                         size={16}
-                        className="transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                        className="shrink-0 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                       />
 
                     </div>
