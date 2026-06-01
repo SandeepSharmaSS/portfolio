@@ -57,7 +57,7 @@ const Footer = () => {
 
           <p className="mt-1 text-sm text-gray-500">
 
-            Software Developer • React • Three.js
+           • Software Developer •
 
           </p>
 
